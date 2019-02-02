@@ -22,12 +22,12 @@ public class GithubSearchTest extends TestBase {
 	@DataProvider(name = "data")
 	public Object[][] createRepositoriesTestData() {   
 		return new Object[][]{
-			{new GithubData("fafasoft","8","upgrade-challenge","javascript","tetris","100","3","updated","desc")}
+			{new GithubData("fafasoft","8","github-search-api-tests","javascript","tetris","100","2","updated","desc")}
 		};
 	}
 	
 	@Test(dataProvider = "data") 
-    public void searchByAuthor(GithubData data)  {
+    public void verifySearchByAuthor(GithubData data)  {
         Reporter.log("Test Scenario 1: Validates that total count of repositories is equal to: " + data.getCount() ,true);
         query = "user:" + data.getUser();
         given()
@@ -41,7 +41,7 @@ public class GithubSearchTest extends TestBase {
     }
 	
 	@Test(dataProvider = "data")
-    public void searchByRepositoryName(GithubData data) {
+    public void verifySearchByRepositoryName(GithubData data) {
         Reporter.log("Test Scenario 2: Validates that repository name '" + data.getName() + "' for user '" + data.getUser() + "'" ,true);
         query = data.getName() + " in:name user:" + data.getUser();
         given()
@@ -54,7 +54,7 @@ public class GithubSearchTest extends TestBase {
     }
     
 	@Test(dataProvider = "data")
-    public void searchByLanguage(GithubData data) {
+    public void verifySearchByLanguage(GithubData data) {
         Reporter.log("Test Scenario 3: Validates that language '" + data.getLanguage() + "' is present for user '" + data.getUser() + "'",true);
         query = "language:" + data.getLanguage() + " user:" + data.getUser();
         given()
@@ -68,7 +68,7 @@ public class GithubSearchTest extends TestBase {
     
     
 	@Test(dataProvider = "data")
-    public void verifyPagination(GithubData data) {
+    public void verifySearchPagination(GithubData data) {
         Reporter.log("Test Scenario 4: Validates that requested number of '" + data.getPages() + "' pages works for the keyword '" + data.getKeyword() + "'",true);
         query = data.getKeyword();
         given()
@@ -81,7 +81,7 @@ public class GithubSearchTest extends TestBase {
     }
     
 	@Test(dataProvider = "data")
-    public void verifySorting(GithubData data) {
+    public void verifySearchSorting(GithubData data) {
         Reporter.log("Test Scenario 5: Validates that sorting method works properly." ,true);
         query = "user:" + data.getUser();
         given()

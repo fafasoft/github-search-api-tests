@@ -8,11 +8,11 @@
         <classes>
             <class name="test.api.tests.GithubSearchTest">
                 <methods>
-                    <include name="searchByAuthor"/>                    
-                    <include name="searchByRepositoryName"/>
-                    <include name="searchByLanguage"/>
-                    <include name="verifyPagination"/>               
-                    <include name="verifySorting"/>
+                    <include name="verifySearchByAuthor"/>                    
+                    <include name="verifySearchByRepositoryName"/>
+                    <include name="verifySearchByLanguage"/>
+                    <include name="verifySearchPagination"/>               
+                    <include name="verifySearchSorting"/>
                 </methods>
             </class>
         </classes>
