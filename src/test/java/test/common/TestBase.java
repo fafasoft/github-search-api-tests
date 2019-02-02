@@ -1,40 +1,39 @@
 package test.common;
 
-import test.web.common.Driver;
 
 import org.testng.ITestContext;
 import org.testng.Reporter;
-import org.testng.annotations.AfterGroups;
-import org.testng.annotations.BeforeGroups;
-import io.restassured.RestAssured;
+import org.testng.annotations.BeforeClass;
+import io.restassured.http.ContentType;
+import io.restassured.specification.RequestSpecification;
+import io.restassured.builder.RequestSpecBuilder;
+import io.restassured.filter.log.RequestLoggingFilter;
+import io.restassured.filter.log.ResponseLoggingFilter;
 
 /**
- * Created by Fabricio Foruria on 21-Jan-19.
+ * Created by Fabricio Foruria on 1-Feb-19.
  */
 public class TestBase {	
 	
-    public String baseURI;
-    public String basePath;
+    public static String baseURI;
+    public static String basePath;
     public String count;
     public String states;
     
-	@BeforeGroups(groups = "api")
-    public void setupApiTest(ITestContext context) {
-		RestAssured.baseURI = context.getCurrentXmlTest().getParameter("baseURI");
-        basePath = context.getCurrentXmlTest().getParameter("basePath");
-        count = context.getCurrentXmlTest().getParameter("count");
-        Reporter.log("baseURI="+baseURI+" basePath="+basePath+" count="+count, true);   
-        RestAssured.basePath = basePath;
-        states = context.getCurrentXmlTest().getParameter("states");  	 
-    }	
+	protected static RequestSpecification spec;
 
-	@BeforeGroups(groups = "web")
-    public void initialization(){
-        Driver.init();
-    }
-
-	@AfterGroups(groups = "web")
-    public void cleanup(){
-        Driver.tearDown();
-    }   	
+	@BeforeClass
+	public static void initSpec(ITestContext context){
+		baseURI = context.getCurrentXmlTest().getParameter("baseURI");
+		basePath = context.getCurrentXmlTest().getParameter("basePath");
+	
+		Reporter.log("baseURI="+baseURI+" - basePath="+basePath, true);  
+	    spec = new RequestSpecBuilder()
+	            .setContentType(ContentType.JSON)
+	            .setBaseUri(baseURI)
+	            .setBasePath(basePath)
+	            //.addFilter(new ResponseLoggingFilter()) //logs request and response for better debugging. You can also only log if a requests fails.
+	            //.addFilter(new RequestLoggingFilter())
+	            .build();
+	} 	
 }

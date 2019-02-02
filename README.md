@@ -1,19 +1,17 @@
-# Upgrade Test Automation task
+# CellTrak SDET Coding Challenge
 
-Selenium Webdriver + REST Assured + TestNG automation framework.
+REST Assured + TestNG automation framework.
 
 # Installation
 
-### Requirement
+### Requirements
 
 * JRE
 * Maven
 
-### Build and run Sanity tests
+### Build and run API tests
 
 * mvn clean test
-
-
 
 
 

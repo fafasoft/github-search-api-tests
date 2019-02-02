@@ -1,41 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Sanity Suite">
-    <parameter name="baseURI" value="https://credapi.credify.tech"/>
-    <parameter name="basePath" value="/api/loanapp/v1/states" />
-    <parameter name="count" value="47" />
-    <parameter name="states" value="codeRegex=/^(alabama|alaska|arizona|arkansas|california|colorado|connecticut|delaware|florida|georgia|hawaii|idaho|illinois|indiana|iowa|kansas|kentucky|louisiana|maine|maryland|massachusetts|michigan|minnesota|mississippi|missouri|montana|nebraska|nevada|new hampshire|new jersey|new mexico|new york|north carolina|north dakota|ohio|oklahoma|oregon|pennsylvania|rhode island|south carolina|south dakota|tennessee|texas|utah|vermont|virginia|washington|west virginia|wisconsin|wyoming)$/" />
+    <parameter name="baseURI" value="https://api.github.com"/>
+    <parameter name="basePath" value="/search/repositories"/>
+    https://developer.github.com/v3/search/
     <test name="REST API Tests">
-    	<groups>
-			<run>
-				<include name="api" />
-			</run>
-		</groups>
         <classes>
-            <class name="test.api.tests.StatesApiTest">
+            <class name="test.api.tests.GithubSearchTest">
                 <methods>
-                    <include name="validatesTotalStatesCount"/>
-                    <include name="validatesAllStatesNamesValid"/>
-                    <include name="validatesOnlyOneStateHasMinAgeOf19"/>
-                    <include name="validatesGeorgiaOnlyStateWithMinLoanAmountRequirementOf"/>
+                    <include name="searchByAuthor"/>                    
+                    <include name="searchByRepositoryName"/>
+                    <include name="searchByLanguage"/>
+                    <include name="verifyPagination"/>               
+                    <include name="verifySorting"/>
                 </methods>
             </class>
         </classes>
     </test>
-    <test name="E2E WEB Tests">
-    	<groups>
-			<run>
-				<include name="web" />
-			</run>
-		</groups>
-        <classes>
-            <class name="test.web.tests.UpgradeWebTest">
-                <methods>
-                    <include name="validatesThatNewUserCanCheckHisRateandGetAnLoanOffer"/>
-                </methods>
-            </class>
-        </classes>
-    </test> 
     <target name="reports">
   <junitreport todir="test-report">
     <fileset dir="test-output">
