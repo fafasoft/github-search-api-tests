@@ -6,13 +6,13 @@
     https://developer.github.com/v3/search/
     <test name="REST API Tests">
         <classes>
-            <class name="test.api.tests.GithubSearchTest">
+            <class name="api.tests.GithubSearchRepositoriesTest">
                 <methods>
-                    <include name="verifySearchByAuthor"/>                    
-                    <include name="verifySearchByRepositoryName"/>
-                    <include name="verifySearchByLanguage"/>
-                    <include name="verifySearchPagination"/>               
-                    <include name="verifySearchSorting"/>
+                    <include name="verifyRepositoryNameIsPresentForAuthor"/>                    
+                    <include name="verifyTotalReposCountByAuthor"/>
+                    <include name="verifySortOrderParametersForAuthor"/>
+                    <include name="verifyPaginationParameterForAuthor"/>               
+                    <include name="verifyReposCountByLanguageForAuthor"/>
                 </methods>
             </class>
         </classes>

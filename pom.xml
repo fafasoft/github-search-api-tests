@@ -5,7 +5,7 @@
     <artifactId>api-testing</artifactId>
     <version>0.0.1</version>
     <packaging>jar</packaging>
-    <name>upgrade-web-api-testing</name>
+    <name>github-search-api-testing</name>
     <properties>
 	   	<maven.compiler.source>1.8</maven.compiler.source>
 	   	<maven.compiler.target>1.8</maven.compiler.target>
@@ -95,7 +95,3 @@
         </profile>
     </profiles>
 </project>
-
-
-
-

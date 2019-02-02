@@ -1,5 +1,4 @@
-package test.common;
-
+package api.common;
 
 import org.testng.ITestContext;
 import org.testng.Reporter;

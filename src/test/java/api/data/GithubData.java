@@ -1,5 +1,7 @@
-package test.api.data;
-
+package api.data;
+/**
+ * Created by Fabricio Foruria on 1-Feb-19.
+ */
 public class GithubData {
 
 	private String user;
@@ -68,9 +70,4 @@ public class GithubData {
 	public String getOrder() {
 		return order;
 	}	
-	
-	
-	
-	
-	
 }
