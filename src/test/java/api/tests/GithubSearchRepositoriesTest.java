@@ -19,7 +19,8 @@ public class GithubSearchRepositoriesTest extends TestBase {
 	@DataProvider(name = "data")
 	public Object[][] createRepositoriesTestData() {   
 		return new Object[][]{
-			{new GithubData("fafasoft","8","github-search-api-tests","javascript","cucumber","100","2","updated","desc")}
+			{new GithubData("fafasoft","8","github-search-api-tests","javascript","cucumber","100","2","updated","desc")},
+			{new GithubData("fafasoft","8","albums","ruby","protractor","100","2","stars","asc")}
 		};
 	}
 
